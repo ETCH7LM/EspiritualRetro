@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>El Confesionario del Sprint</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="aviso" class="aviso oculto"></div>
+
+  <!-- Ambiente: rayos de luz, polvo dorado, humo de incienso y efectos -->
+  <div class="rayos" aria-hidden="true"></div>
+  <div id="ambiente" class="ambiente" aria-hidden="true"></div>
+  <div id="efectos" class="efectos" aria-hidden="true"></div>
+  <button id="btnSonido" class="btn-sonido" title="Sonido">🔊</button>
+
+  <!-- INICIO -->
+  <section id="inicio" class="inicio">
+    <div class="velas" aria-hidden="true">
+      <div class="vela"><i class="llama"></i><b class="cera"></b></div>
+      <div class="vela alta"><i class="llama"></i><b class="cera"></b></div>
+      <div class="vela"><i class="llama"></i><b class="cera"></b></div>
+    </div>
+    <div class="vitral">✝</div>
+    <h1>El Confesionario del Sprint</h1>
+    <p class="latin"><em>Ego te absolvo... de tus bugs</em></p>
+
+    <div class="paneles">
+      <form id="formPadre" class="panel">
+        <h2>🕯️ Soy el Padre</h2>
+        <p class="sub">Abre un confesionario para tu equipo.</p>
+        <input id="inSprint" type="text" placeholder="Nombre del sprint (ej. Sprint 24)" maxlength="40" required>
+        <button class="btn-oro" type="submit">Abrir confesionario</button>
+      </form>
+
+      <form id="formFeligres" class="panel">
+        <h2>🙏 Soy feligrés</h2>
+        <p class="sub">Entra con el código que muestra el Padre.</p>
+        <input id="inCodigo" type="text" placeholder="CÓDIGO" maxlength="5" autocapitalize="characters" required>
+        <button class="btn-oro" type="submit">Pasar tras la celosía</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- SALA -->
+  <main id="sala" class="oculto">
+    <header class="cabecera">
+      <div>
+        <h1><span class="cruz-brilla">✝</span> <span id="tituloSprint"></span></h1>
+        <p class="latin" id="subtitulo"></p>
+      </div>
+      <div class="codigo-caja">
+        <span>Código</span>
+        <strong id="codigoSala"></strong>
+      </div>
+      <div class="acciones oculto" id="accionesPadre">
+        <button id="btnCampana" class="btn-sec">🔔 Tocar campana</button>
+        <button id="btnExportar" class="btn-sec">📜 Exportar acta</button>
+        <button id="btnSalir" class="btn-sec">Salir</button>
+      </div>
+      <div class="acciones oculto" id="accionesFeligres">
+        <button id="btnSalir2" class="btn-sec">Salir</button>
+      </div>
+    </header>
+
+    <!-- Vista feligrés: celosía -->
+    <section id="vistaFeligres" class="oculto">
+      <div id="confesionario" class="confesionario cerrada">
+        <div class="cortina izq"></div>
+        <div class="cortina der"></div>
+        <div class="celosia"></div>
+        <form id="formConfesion" class="confesion">
+          <p class="latin">«Ave María Purísima... cuéntame, hijo mío.»</p>
+          <div class="tipos">
+            <label><input type="radio" name="tipo" value="milagro"><span>🕊️ Milagro</span></label>
+            <label><input type="radio" name="tipo" value="pecado" checked><span>🔥 Pecado</span></label>
+            <label><input type="radio" name="tipo" value="plegaria"><span>🙏 Plegaria</span></label>
+          </div>
+          <textarea id="txtConfesion" required maxlength="280" placeholder="Perdóname, Padre, porque hice deploy un viernes..."></textarea>
+          <button class="btn-oro" type="submit">Confesar en secreto</button>
+          <p class="sub" id="contadorConf">Tu identidad queda oculta tras la celosía.</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Vista Padre: buzón -->
+    <section id="vistaPadre" class="oculto">
+      <div class="buzon">
+        <h2>✉️ Buzón sellado</h2>
+        <p class="sub">Los sobres llegan en tiempo real. Ábrelos uno por uno.</p>
+        <div id="resumenBuzon" class="resumen"></div>
+        <div id="listaSobres" class="sobres"></div>
+      </div>
+    </section>
+
+    <!-- Altar (ambas vistas) -->
+    <section class="altar">
+      <h2>� El Altar</h2>
+      <p class="sub">Confesiones reveladas. Vota <strong>Amén</strong> a lo que más te resuene.</p>
+      <div id="listaAltar" class="altar-lista"></div>
+      <p id="altarVacio" class="sub">El altar espera la primera confesión...</p>
+    </section>
+  </main>
+
+  <!-- Campana -->
+  <div id="overlayCampana" class="overlay-campana oculto">
+    <div class="campana">🔔</div>
+    <p>¡DING, DONG!</p>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
